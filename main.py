@@ -43,5 +43,7 @@ pixel_update_params = {
     'quantity': '4',
 }
 
-response = requests.put(url=pixel_update_endpoint, json=pixel_update_params, headers=headers)
+pixel_delete_endpoint = f'{pixel_update_endpoint}'
+
+response = requests.delete(url=pixel_update_endpoint, headers=headers)
 print(response.text)
