@@ -1,16 +1,31 @@
 import os
 import requests
 
-PIXELA_TOKEN = os.environ.get('PIXELA_TOKEN')
+USERNAME = 'klayaclarke'
+TOKEN = os.environ.get('PIXELA_TOKEN')
+
+headers = {
+    'X-USER-TOKEN': TOKEN
+}
+
 pixela_endpoint = 'https://pixe.la/v1/users'
 
 pixela_params = {
-    'token': PIXELA_TOKEN,
+    'token': TOKEN,
     'username': 'klayaclarke',
     'agreeTermsOfService': 'yes',
     'notMinor': 'yes',
 }
 
-pixela_response = requests.post(url=pixela_endpoint, json=pixela_params,)
+graph_endpoint = f'{pixela_endpoint}/{USERNAME}/graphs'
 
-print(pixela_response.text)
+graph_params = {
+    'id': 'graph1',
+    'name': 'Programming Graph',
+    'unit': 'hour',
+    'type': 'float',
+    'color': 'sora'
+}
+
+response = requests.post(url=graph_endpoint, json=graph_params, headers=headers)
+print(response.text)
