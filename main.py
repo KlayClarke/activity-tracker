@@ -1,4 +1,5 @@
 import os
+from datetime import datetime
 import requests
 
 USERNAME = 'klayaclarke'
@@ -30,10 +31,11 @@ graph_params = {
 
 pixel_creation_endpoint = f'{pixela_endpoint}/{USERNAME}/graphs/{GRAPH_ID}'
 
+today = datetime.now()
 pixel_creation_params = {
-    'date': '20211129',
+    'date': today.strftime('%Y%m%d'),
     'quantity': '3.5',
 }
 
-response = requests.post(url=pixel_creation_endpoint, json=pixel_creation_params, headers=headers)
-print(response.text)
+# response = requests.post(url=pixel_creation_endpoint, json=pixel_creation_params, headers=headers)
+# print(response.text)
