@@ -2,6 +2,7 @@ import os
 import requests
 
 USERNAME = 'klayaclarke'
+GRAPH_ID = 'graph1'
 TOKEN = os.environ.get('PIXELA_TOKEN')
 
 headers = {
@@ -20,12 +21,19 @@ pixela_params = {
 graph_endpoint = f'{pixela_endpoint}/{USERNAME}/graphs'
 
 graph_params = {
-    'id': 'graph1',
+    'id': GRAPH_ID,
     'name': 'Programming Graph',
     'unit': 'hour',
     'type': 'float',
     'color': 'sora'
 }
 
-response = requests.post(url=graph_endpoint, json=graph_params, headers=headers)
+pixel_creation_endpoint = f'{pixela_endpoint}/{USERNAME}/graphs/{GRAPH_ID}'
+
+pixel_creation_params = {
+    'date': '20211129',
+    'quantity': '3.5',
+}
+
+response = requests.post(url=pixel_creation_endpoint, json=pixel_creation_params, headers=headers)
 print(response.text)
