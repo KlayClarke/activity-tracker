@@ -34,8 +34,14 @@ pixel_creation_endpoint = f'{pixela_endpoint}/{USERNAME}/graphs/{GRAPH_ID}'
 today = datetime.now()
 pixel_creation_params = {
     'date': today.strftime('%Y%m%d'),
-    'quantity': '3.5',
+    'quantity': '2',
 }
 
-# response = requests.post(url=pixel_creation_endpoint, json=pixel_creation_params, headers=headers)
-# print(response.text)
+pixel_update_endpoint = f'{pixel_creation_endpoint}/20211128'
+
+pixel_update_params = {
+    'quantity': '4',
+}
+
+response = requests.put(url=pixel_update_endpoint, json=pixel_update_params, headers=headers)
+print(response.text)
