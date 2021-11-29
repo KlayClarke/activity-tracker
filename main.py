@@ -45,5 +45,5 @@ pixel_update_params = {
 
 pixel_delete_endpoint = f'{pixel_update_endpoint}'
 
-response = requests.delete(url=pixel_update_endpoint, headers=headers)
+response = requests.delete(url=pixel_delete_endpoint, headers=headers)
 print(response.text)
